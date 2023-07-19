@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Button } from "antd";
-import logo from "../assets/logo_3_2.png";
+import logo from "../assets/big-logo.png";
 import ReactRotatingText from "react-rotating-text";
 import { useNavigate } from "react-router-dom";
 import { APP_DESC } from "../util/constants";

@@ -1,5 +1,5 @@
 <p align='center'>
-    <img src='./img/logo_3_2.png' width=400/>
+    <img src='./img/big-logo.png' width=400/>
 </p>
 
 SecureSign
