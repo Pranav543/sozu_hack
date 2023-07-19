@@ -64,7 +64,7 @@ function App() {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          {APP_NAME} ©2022 - Created for Road to Web3 2022
+          {APP_NAME} 2023 - Created for Sozu Hacks
         </Footer>
       </Layout>
     </div>

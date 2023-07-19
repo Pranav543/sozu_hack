@@ -10,7 +10,6 @@ SecureSign is a prototype web3 implementation of esignature collection built on 
 
 Enables Docusign-like capabilities / use-cases using web3 infrastructure.
 
-Built for the Road to Web3 hackathon 2022.
 
 ### Benefits
 
