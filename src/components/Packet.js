@@ -3,10 +3,13 @@ import SignatureCanvas from "react-signature-canvas";
 import { Button, Modal, Input } from "antd";
 import { getExplorerUrl, ipfsUrl } from "../util";
 import { ACTIVE_CHAIN_ID } from "../util/constants";
+import { Antibot } from "zkme-antibot-component";
 
 function Packet(props) {
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState();
+  const [isVerified, setIsVerified] = useState(false);
+  const [showAntibot, setShowAntibot] = useState(false);
   const sigCanvas = useRef();
 
   const {
@@ -19,9 +22,11 @@ function Packet(props) {
     title,
     files,
   } = props;
-  console.log("authed: ", authed)
-  console.log("files: ", files)
 
+  const verifySuccess = (response) => {
+    console.log("response: ", response); //print out the face image in base64 code
+    setIsVerified(true); // Set user as verified
+  };
 
   const postSignature = () => {
     const dataUrl = sigCanvas.current.toDataURL();
@@ -29,7 +34,6 @@ function Packet(props) {
   };
 
   const openUrl = (url) => window.open(url, "_blank");
-  console.log("authorized", authed);
 
   if (!authed) {
     return (
@@ -92,13 +96,25 @@ function Packet(props) {
         By continuing, you agree to the documents listed and available for
         download above.
       </p>
-      <Button
-        type="primary"
-        onClick={() => setShowModal(true)}
-        disabled={!authed || filesToSign.length === 0}
-      >
-        Accept Documents
-      </Button>
+      {isVerified ? (
+        <Button
+          type="primary"
+          onClick={() => setShowModal(true)}
+          disabled={!authed || filesToSign.length === 0}
+        >
+          Accept Documents
+        </Button>
+      ) : (
+        <Button type="primary" onClick={() => setShowAntibot(true)}>
+          Prove Liveness
+        </Button>
+      )}
+
+      {showAntibot && !isVerified && (
+        <div>
+          <Antibot isOpen={showAntibot} verifySuccess={verifySuccess} />
+        </div>
+      )}
 
       <Modal
         visible={showModal}

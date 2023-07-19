@@ -84,8 +84,8 @@ function Sign({ match }) {
     setLoading(true);
   
     try {
-      const tx = await findAndMintToken(signerAddress)
-      console.log("NFT Created Successfully: ", tx)
+      // const tx = await findAndMintToken(signerAddress)
+      // console.log("NFT Created Successfully: ", tx)
       const res = await createSignatureNFT(
         title,
         description,
